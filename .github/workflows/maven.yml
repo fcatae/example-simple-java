@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: export LINE=blablablablablabla... mvn -B package --file pom.xml
+      run: export LINE=blablablablablabla...mvn 
 
     - name: Show path
       run: ls $GITHUB_WORKSPACE/target
