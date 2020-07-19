@@ -35,6 +35,10 @@ jobs:
           Changes in this Release
         draft: false
         prerelease: true
+    - name: Files
+      run: ls 
+    - name: Folder
+      run: pwd
 
     - name: Upload Release Asset
       id: upload-release-asset 
