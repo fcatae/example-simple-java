@@ -15,6 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Log
-      run: echo LOG
+      run: echo ${{ github.event.release.upload_url }}
       env: 
         LOG: ${{ toJson(github) }}
+        LOG2: ${{ toJson(github.event.release) }}
+        LOG3: ${{ toJson(github.event) }}
