@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.build.outputs.test }}
 
     steps:
     - uses: actions/checkout@v2
@@ -21,7 +23,9 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: ls -1 target/*.jar > output_filename.txt
+      run: |
+        ls -1 target/*.jar 
+        ::set-output name=test::hello
 
     - name: ECHO
-      run: echo $(cat output_filename.txt)
+      run: echo ${{needs.build.outputs.output1}}
