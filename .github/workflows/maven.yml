@@ -22,9 +22,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: |
-        ls 
-        echo "::set-output name=test::hello"
+      run: echo "::set-output name=test::hello"
 
   release:
     runs-on: ubuntu-latest
