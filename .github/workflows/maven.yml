@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: export LINE=blablablablablabla...mvn 
+      run: ls -1 *.jar > output_filename.txt
 
     - name: ECHO
-      run: echo $LINE
+      run: echo $(cat output_filename.txt)
