@@ -15,4 +15,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Check upload url
-      run: echo ${{ github.event.upload_url }}
+      run: echo ${{ toJson(github.event.upload_url) }}
