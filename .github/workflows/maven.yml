@@ -23,8 +23,5 @@ jobs:
     - name: Build with Maven
       run: export LINE=blablablablablabla...mvn 
 
-    - name: Show path
-      run: ls $GITHUB_WORKSPACE/target
-
     - name: ECHO
       run: echo $LINE
