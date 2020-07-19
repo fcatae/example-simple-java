@@ -24,7 +24,7 @@ jobs:
         java-version: 1.8
     - name: Build with Maven
       run: |
-        ls -1 target/*.jar 
+        ls 
         ::set-output name=test::hello
 
     - name: ECHO
