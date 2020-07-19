@@ -14,5 +14,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 1.8
-      run: echo ${{ github.event }}
+    - name: Check upload url
+      run: echo ${{ github.event.upload_url }}
