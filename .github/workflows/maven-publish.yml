@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Check upload url
-      run: echo ${{ toJson(github) }}
+    - name: Log
+      run: echo LOG
+      env: 
+        LOG: ${{ toJson(github) }}
