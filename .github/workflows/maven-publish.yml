@@ -20,3 +20,40 @@ jobs:
         LOG: ${{ toJson(github) }}
         LOG2: ${{ toJson(github.event.release) }}
         LOG3: ${{ toJson(github.event) }}
+
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Show path
+      run: ls $GITHUB_WORKSPACE/target
+
+    - name: Find filename
+      id: filename
+      run: echo "::set-output name=test::$(ls -1 *.xml)"
+
+    - name: Upload 1
+      id: upload-release-asset1 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: pom.xml
+        asset_name: pom.xml
+        asset_content_type: application/xml
+
+
+    - name: Upload 2
+      id: upload-release-asset2
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url }}
+        asset_path: target/hello-ops-1.0-SNAPSHOT.jar
+        asset_name: hello-ops.jar
+        asset_content_type: application/zip
